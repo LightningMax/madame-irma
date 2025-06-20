@@ -1,11 +1,10 @@
 <?php
-
-require 'vendor/autoload.php';
+require_once __DIR__ . '/bootstrap.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$stripe = \Stripe\Stripe::setApiKey('');
+$stripe = \Stripe\Stripe::setApiKey($_ENV['STRIPE_KEY']);
 
 $session_id = $_GET['session_id'];
 
@@ -17,11 +16,11 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host       = '';
+    $mail->Host       = $_ENV['SMTP_HOST'];
     $mail->SMTPAuth   = true;
-    $mail->Username   = '';  
-    $mail->Password   = '';
-    $mail->Port       = 2525;
+    $mail->Username   = $_ENV['SMTP_USERNAME'];  
+    $mail->Password   = $_ENV['SMTP_PASSWORD'];
+    $mail->Port       = $_ENV['SMTP_PORT'];
 
     $mail->setFrom('noreply@madameirma.com', 'Madame Irma 🔮');
     $mail->addAddress($email , $name);

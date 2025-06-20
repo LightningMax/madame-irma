@@ -1,7 +1,5 @@
 <?php
+require_once __DIR__ . '/bootstrap.php';
 
-$firstname = $_POST['firstname'];
-
-# ici changer la page vers la page du produit (product link)
-header("Location: ");
+header("Location: " . $_ENV['PRODUCT_LINK']);
 exit;
