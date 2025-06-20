@@ -37,6 +37,12 @@ git clone https://github.com/votre-utilisateur/madame-irma.git
 cd madame-irma
 ```
 
+2. Installez les dépendances avec Composer :
+
+```bash
+composer install
+```
+
 Modifier le fichier .env:
 
 - STRIPE_KEY=...
